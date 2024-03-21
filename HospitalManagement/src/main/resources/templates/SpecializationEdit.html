@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https:/www.thymeleaf.org">
+<head>
+  <title>Specialization Form</title>
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+    
+    .create-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    
+    .create-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Specialization Form</h2>
+    <p style="color:rgb(0, 255, 0)"> [[${message}]]</p>
+    <form action="/specialization/update" method="post" th:object="${specialObj}">
+      <div class="form-group" >
+        <label for="code">Code:</label>
+        <input type="text" id="code" th:field="*{code}" >
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" >
+      </div>
+      <div class="form-group">
+        <label for="note">Note:</label>
+        <textarea id="note" th:field="*{note}" rows="4" ></textarea>
+      </div>
+      <input type="Submit" class="create-button" value="Update">
+    </form>
+  </div>
+</body>
+</html>

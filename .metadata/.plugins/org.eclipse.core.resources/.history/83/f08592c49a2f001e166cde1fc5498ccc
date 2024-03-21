@@ -1,0 +1,77 @@
+package com.springproject.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.springproject.model.Product;
+import com.springproject.service.CategoryService;
+import com.springproject.service.productService;
+
+@Controller
+@RequestMapping("/Insta-deals")
+public class productviewpagecontroller {
+
+	
+	@Autowired 
+	private productService productservice;
+	
+	@Autowired 
+	private CategoryService catservice;
+
+	@GetMapping("/Adminproductlist")
+	public String getadminproductpage(Model model) {
+		
+		  model.addAttribute("allproducts", productservice.getallproduct());
+		  model.addAttribute("totalproducts", productservice.totalnumberproduct());
+		  model.addAttribute("totalcategories", catservice.countcategory());
+		
+		return "AdminProductlistViewPage";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteproduct(@RequestParam int id) {
+		
+		productservice.deleteproduct(id);
+		
+		return "redirect:/Insta-deals/Adminproductlist";
+	}
+	
+	@GetMapping("/view")
+	public String viewproduct(@RequestParam int id, Model model) {
+		
+		
+		model.addAttribute("allproducts", productservice.getproductbyid(id));
+		
+		return "ProductViewPageforAdmin";
+	}
+	
+	@GetMapping("/edit")
+	public String editproduct(@RequestParam int id, Model model) {
+		
+		
+		model.addAttribute("allproducts", productservice.getproductbyid(id));
+		
+		model.addAttribute("Categorylist", catservice.getallcategory());	
+		
+		return "ProductEditPageforAdmin";
+	}
+	
+	@PostMapping("/update")
+		public String updateproduct(Product product) {
+			
+			productservice.updateproduct(product);
+			
+			
+			return "redirect:/Insta-deals/Adminproductlist";
+			
+		}
+		
+		
+		
+	
+}

@@ -1,0 +1,11 @@
+package oops;
+
+public class BookObject {
+
+	
+	// properties
+	
+	int bookID;
+	String
+	
+}

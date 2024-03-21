@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Department Form</title>
+<style>
+
+
+.form-container {
+	display: flex;
+	justify-content: center;
+	align-items: center-top;
+	height: 100vh;
+}
+
+body {
+	font-family: Arial, sans-serif;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+input[type="text"] {
+	width: 300px;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.add-button {
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<div class="form-container">
+		<form action="/department/add" method="post">
+			
+				<h1>Department Form</h1>
+			
+			<div class="form-group">
+				<label for="dept_name">Department Name:</label> <input type="text"
+					id="dept_name" name="dept_name" required>
+			</div>
+			<div class="form-group">
+				<label for="dept_hod">Head of Department:</label> <input type="text"
+					id="dept_hod" name="dept_hod" required>
+			</div>
+			<div class="form-group">
+				<label for="dept_phone">Department Phone:</label> <input type="text"
+					id="dept_phone" name="dept_phone" required>
+			</div>
+			<input type="submit" value="Add" class="add-button">
+		</form>
+	</div>
+</body>
+</html>

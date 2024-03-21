@@ -1,0 +1,18 @@
+package oops;
+
+public class Test {
+
+	
+	public static void main(String[] args) {
+		
+			BookObject book = new BookObject();
+			
+			book.bookID = 101;
+			book.bookAurther = "Piyush";
+			book.bookName = "Hello World";
+			book.BookPrice = 1200;
+			
+			book.printbook();
+		
+	}
+}

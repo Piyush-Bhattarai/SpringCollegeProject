@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<style>
+body {
+  background-color: #f7f7f7;
+}
+
+.navbar {
+  background-color: #4326c2;
+  color: #fff;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-weight: bold;
+}
+
+.custom-container {
+  margin-top: 80px;
+}
+
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-body:hover {
+  cursor: pointer;
+  background: #e2e2e2;
+}
+
+.card:hover {
+  border: 2px solid blue;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.modal {
+  z-index: 9999;
+  
+  }
+  
+      .error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar start -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="redirect:/Insta-deals/AdminDashboardPage">Insta-deals</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/profile.png" alt="P" class="rounded-circle profile-image">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right profile-dropdown" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i> Add Profile Picture</a>
+            <a class="dropdown-item" href="/Insta-deals/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-key"></i> Change Password</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Navbar close -->
+    
+<div class="custom-container">
+  <div class="row mt-3">
+    <!-- first column -->
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <div class="container">
+            <img style="max-width: 150px" class="img-fluid rounded-circle" src="/images/editeduser.png" alt="userloading">
+          </div>
+          <div>
+          	<p> Total User: [[${totaluser}]]</p>
+          </div>
+          <h1 class="text-uppercase text-muted">Users</h1>
+        </div>
+      </div>
+    </div>
+    <!-- second column -->
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <div class="container">
+            <img style="max-width: 127px" class="img-fluid rounded-circle" src="/images/categorylist.png" alt="userloading">
+          </div>
+          <div>
+          <p>Total Categories: [[${totalcategories}]]</p>
+          </div>
+          <h1 class="text-uppercase text-muted">Categories</h1>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Third column -->
+    <div class="col-md-4">
+      <div class="card text-center">
+      <a href="/Insta-deals/Adminproductlist">
+        <div class="card-body">
+          <div class="container">
+            <img style="max-width: 150px" class="img-fluid rounded-circle" src="/images/productlist.png" alt="userloading">
+          </div>
+          <div>
+          <p>Total Products: [[${totalproducts}]]</p>
+          </div>
+
+          <h1 class="text-uppercase text-muted">Products</h1>
+        </div>
+      </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mt-3">
+    <!-- second row first col -->
+    <div class="col-md-6">
+      <div class="card text-center" data-bs-toggle="modal" data-bs-target="#add-category-modal">
+        <div class="card-body">
+          <div class="container">
+            <img style="max-width: 150px" class="img-fluid rounded-circle" src="/images/category.png" alt="userloading">
+          </div>
+          <p class="mt-2">Click To add new category</p>
+          <h1 class="text-uppercase text-muted">Add Category</h1>
+        </div>
+      </div>
+    </div>
+    <!-- second row second col -->
+    <div class="col-md-6">
+      <div class="card text-center" data-bs-toggle="modal" data-bs-target="#add-product-modal">
+        <div class="card-body">
+          <div class="container">
+            <img style="max-width: 150px" class="img-fluid rounded-circle" src="/images/product.png" alt="userloading">
+          </div>
+          <p class="mt-2">Click To add new product</p>
+          <h1 class="text-uppercase text-muted">Add Products</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to add category -->
+<div class="modal fade" id="add-category-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Category Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/Insta-deals/addcategory" method="post">
+          <div class="form-group">
+            <input type="text" class="form-control" name="categoryTitle" placeholder="Enter category title" required="required">
+          </div>
+          <div class="form-group">
+            <textarea style="height:250px" class="form-control" name="categoryDescription" placeholder="Enter category description" required="required"></textarea>
+          </div>
+          <div class="container text-center">
+            <button class="btn btn-outline-success">Add Category</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- add category model ends here -->
+
+<!-- ================================================================================================== -->
+
+<!-- add product model  -->
+	<!-- Button trigger modal -->
+<!-- Modal -->
+<div  class="modal fade" id="add-product-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Products Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+      	
+      		<!-- form  -->
+      		
+      		<form action="/Insta-deals/addproduct" method="post" enctype="multipart/form-data">
+      		
+      			<div class="form-group">
+      				<label for="productTitle">Product Name :</label>
+      				<input type="text" id="productTitle" class="form-control" name="productTitle" placeholder="Enter product Name" required="required">
+      			
+      			</div>
+      			<div class="form-group">
+      			<label for="productDescription">Product Description :</label>
+      				<textarea style="height:160px" class="form-control" name="productDescription" placeholder="Enter product Description" ></textarea>
+      			
+      			</div>
+      			<div class="form-group">
+      			     <label for="productPrice">Product Price :</label>
+      				<input type="number" class="form-control" name="productPrice" placeholder="Enter Price of product " required="required">
+      			
+      			</div>
+      			<div class="form-group">
+      			<label for="productDiscount">Product Discount :</label>
+      				<input type="number" class="form-control" name="productDiscount" placeholder="Enter product discount amount" required="required"> 
+      				
+      			</div>     		
+      			<div class="form-group">
+      				<label for="productQuantity">Product Quantity :</label>
+      				<input type="number" class="form-control" name="productQuantity" placeholder="Enter product quantity" required="required">
+      			
+      			</div>
+      			<div>
+				<select name="category" class="form-control">
+					<option value="">select category</option>
+					<option th:each="cat :${Categorylist}" th:value="${cat.id}">[[${cat.categoryTitle}]]</option>
+				</select>
+			</div>
+      			<div class="form-group">
+      				<label for="productimage">Select Picture of Products :</label>
+      				<input type="file" id="productimage" name="productphoto" required="required">
+      			
+      			
+      			
+      			</div>
+      			<div class="container text-center">
+            <button class="btn btn-outline-success">Add Product</button>
+          </div>
+      		</form>
+      			
+      			
+      			
+      			
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- add product model ends here -->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+</body>
+</html>

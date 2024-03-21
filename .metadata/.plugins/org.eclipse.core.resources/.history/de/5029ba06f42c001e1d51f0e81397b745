@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Description</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .row {
+            margin-top: 60px;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .discount {
+            position: absolute;
+            top: -10px;
+            right: 0;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+        }
+
+        .discounted-price {
+            margin-left: 10px;
+            font-size: 20px;
+            color: #dc3545;
+        }
+
+        .product-description {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .product-quantity {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn-wrapper {
+            text-align: center;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            font-size: 18px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+            border-color: #545b62;
+        }
+
+        .content-wrapper {
+            flex: 1;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0; /* Stick the navbar to the top */
+            background-color: #4326c2;
+            color: #fff;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .custom-profile-image {
+            width: 30px;
+            height: 30px;
+        }
+
+        .profile-dropdown {
+            padding: 0.5rem;
+            min-width: 200px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .profile-dropdown a.dropdown-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-dropdown a.dropdown-item i {
+            margin-right: 0.5rem;
+        }
+
+        .input-group {
+            flex: 0 0 auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <!-- Navbar content -->
+    </nav>
+
+    <!-- Product Details -->
+    <div class="container mt-5">
+        <div class="row">
+            <form th:object="${prodObj}">
+                <div class="col-md-6">
+                    <img class="product-image" th:src="@{/productimage/} + ${prodObj.productimage}" alt="Product Image">
+                </div>
+                <div class="col-md-6">
+                    <h1 class="product-title" th:text="${prodObj.productTitle}">Product Name</h1>
+                    <p class="product-price">
+                        <span class="original-price" th:text="'$' + ${prodObj.productPrice}"> $99.99</span>
+                        <span class="discount">-20%</span>
+                        <span class="discounted-price"> $79.99</span>
+                    </p>
+                    <p class="product-description" th:text="${prodObj.productDescription}">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at malesuada massa, ac convallis
+                        purus. Nulla facilisi. Aenean eu sagittis lorem. Nunc ac efficitur turpis. Etiam mattis eleifend
+                        sapien, a scelerisque ipsum venenatis sit amet. Nunc aliquet a mauris sit amet venenatis. Sed at
+                        nisl neque.
+                    </p>
+                    <p class="product-quantity" th:text="'Available Quantity: ' + ${prodObj.productQuantity}">
+                        Available Quantity: 50
+                    </p>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Buy Now</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 E-commerce. All rights reserved. | Designed by <a href="#">Your Name</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+
+</html>

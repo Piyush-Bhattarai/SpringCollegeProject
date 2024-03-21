@@ -1,0 +1,48 @@
+package com.springproject.controller;
+
+import java.awt.Image;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+
+import javax.mail.Multipart;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.springproject.model.Product;
+import com.springproject.service.productService;
+
+@Controller
+public class ProductController {
+
+	@Autowired
+	private productService productservice;
+
+	@PostMapping("/addproduct")
+	public String addproduct(@RequestParam Multipart image, Model model, @ModelAttribute Product product) {
+
+		try {
+
+			Files.copy(image.getInputStream()), Path.of("src/main/resources/static/productimg/" + image.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+
+			
+
+		} catch (IOException e) {
+
+			e.printStackTrace(e);
+
+		}
+
+		productservice.addproduct(product);
+
+		return "AdminDashboardPage";
+
+	}
+
+}

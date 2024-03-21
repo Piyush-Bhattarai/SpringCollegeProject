@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="https:/www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Doctor Form</title>
+<style>
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+table {
+	border: 2px solid black;
+}
+
+button {
+	display: flex;
+	justify-content: center;
+	align-items: right;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<form action="/doctorform" method="post">
+
+			<table>
+
+				<h3 style="text-align: center;">Doctor Form</h3>
+				<tr>
+					<td>Name :</td>
+					<td><input type="text" name="name" Placeholder="Enter Name"></td>
+				</tr>
+
+				<tr>
+					<td>EmailId :</td>
+					<td><input type="email" name="email"
+						Placeholder=" Enter email"></td>
+				</tr>
+				<tr>
+					<td>Specialization :</td>
+					<td><input type="text" name="specialization"
+						Placeholder=" Enter Specialization"></td>
+				</tr>
+				<tr>
+					<td>Address :</td>
+					<td><input type="text" name="address"
+						Placeholder="Enter Address"></td>
+				</tr>
+				<tr>
+					<td>Mobile :</td>
+					<td><input type="phone" name="mobile"
+						Placeholder="Enter Mobile"></td>
+				</tr>
+				<tr>
+					<td>Gender :</td>
+					<td><input type="radio" name="gender" value="M">M <input
+						type="radio" name="gender" value="F">F</td>
+				</tr>
+				<tr>
+					<td>Note :</td>
+					<td><input type="text" name="note" Placeholder="Enter Note"></td>
+				</tr>
+				<tr>
+					<td><input type="Submit" value="Create"></td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+</body>
+</html>

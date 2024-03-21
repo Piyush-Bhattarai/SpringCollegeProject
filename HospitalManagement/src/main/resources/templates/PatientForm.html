@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Patient Form</title>
+<style >
+	.container{
+	
+			display: flex;
+  			justify-content: center;
+  			align-items: center;
+  	 }		
+  			
+  	 table{
+  	 		
+  			border: 2px solid black;
+  	 
+  	 }
+  	 button{
+  			
+  			display: flex;
+ 			justify-content: center;
+  			align-items: right;
+  			
+  	 }
+  	 
+</style>
+</head>
+<body>
+<div class = "container">
+<form action="/patientform" method = "post">
+
+<table>
+<h2 style ="text-align:center;">Patient Form</h2>
+<tr>
+	<td>Name :</td>
+	<td><input type ="text" name ="firstname" Placeholder = " FirstName">
+	<input type ="text" name ="lastname" Placeholder = "LastName"></td>
+</tr>
+<tr>
+	<td>Gender :</td>
+	<td>
+		<input type = "radio" name = "gender" value = "M">M
+	    <input type = "radio" name = "gender" value = "F">F
+	</td>
+</tr>
+<tr>
+	<td>Phone :</td>
+	<td> <input type = "text" name = "phone" Placeholder = "Enter Phone"></td>
+</tr>
+<tr>
+	<td>Date of Birth :</td>
+	<td> <input type = "date" name = "dob"></td>
+</tr>
+<tr>
+	<td>Martial Status :</td>
+	<td>
+		<input type = "radio" name = "status" value = "M">M
+	    <input type = "radio" name = "status" value = "U">U
+	    <input type = "radio" name = "status" value = "D">D
+	    <input type = "radio" name = "status" value = "LS">LS
+	</td>
+</tr>
+<tr>
+	<td>Present Address  :</td>
+	<td><input type ="text" name ="patient_address" Placeholder = " Enter Address"></td>
+</tr>
+<tr>
+	<td>Communication Address  :</td>
+	<td><input type ="text" name ="caddress" Placeholder = " Enter CommunicationAddress"></td>
+</tr>
+<tr>
+	<td>Past Medical History :</td>
+	<td><input type="checkbox" name="anemia" value="Anemia">Anemia
+		<input type="checkbox" name="asthma" value="Asthma">Asthma
+		<input type="checkbox" name="diabetes" value="Diabetes">Diabetes
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td>
+		<input type="checkbox" name="cancer" value="Cancer">Cancer
+		<input type="checkbox" name="ulcer" value="Ulcer">Ulcer
+		<input type="checkbox" name="chickenpox" value="Chickenpox">ChickenPox
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td>
+		<input type="checkbox" name="other" value="Other">Other
+		<input type="text" name="othernote">
+	</td>
+</tr>
+<tr>
+	<td>Other Details :</td>
+	<td><input type="text" name="details"></td>
+</tr>
+<tr>
+	<td>
+		<input type = "Submit" value = "Register">
+	</td>
+</tr>
+
+</table>
+</form>
+</div>
+</body>
+</html>

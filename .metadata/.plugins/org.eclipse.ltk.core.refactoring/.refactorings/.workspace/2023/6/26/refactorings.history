@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;userloginpracticespringproject-1&apos; to &apos;E-commerce_mywebsite&apos;" description="Rename resource &apos;userloginpracticespringproject-1&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/userloginpracticespringproject-1" name="E-commerce_mywebsite" stamp="1688135925868" updateReferences="true"/>
+</session>

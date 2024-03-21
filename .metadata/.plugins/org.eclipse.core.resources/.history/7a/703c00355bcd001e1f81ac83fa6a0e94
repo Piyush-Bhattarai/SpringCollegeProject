@@ -1,0 +1,19 @@
+package oops;
+
+public class BookObject {
+
+	
+	// properties
+	
+	int bookID;
+	String bookName;
+	String bookAurther;
+	float BookPrice;
+	
+	
+	
+	//method
+	
+	static void printb
+	
+}

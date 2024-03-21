@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<bean class="com.di.Product" id="prod">
+
+		<constructor-arg value="2332" />
+		<constructor-arg value="Phone" />
+		<constructor-arg value="50000" />
+
+
+	</bean>
+
+	<bean class="com.di.Car" id="cr">
+
+		<property name="color" value="Red" />
+		<property name="price" value="500000" />
+
+	</bean>
+
+	<bean class="com.di.Employee" id="emp">
+
+		<property name="id" value="12" />
+		<property name="name" value="Piyush Bhattarai" />
+		<property name="salary" value="56000" />
+		<property name="car" ref="cr" />
+
+	</bean>
+	<bean class="com.di.Student" id="std">
+
+		<property name="id" value="21" />
+		<property name="name" value="Piyush Bhattarai" />
+		<property name="college" value="Niagara COllege toronto" />
+		<property name="faculty" value="IT" />
+
+	</bean>
+
+</beans>

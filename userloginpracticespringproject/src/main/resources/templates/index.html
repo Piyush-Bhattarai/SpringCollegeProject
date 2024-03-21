@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Index page</title>
+  <style>
+    body {
+      background-color: #151515;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 400px;
+      padding: 40px;
+      background: linear-gradient(45deg,#4679e6, #5bb28c);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: #fff;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #fff;
+      color: #ff4b2b;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ff4b2b;
+      color: #fff;
+    }
+
+    
+
+    @keyframes circleAnimation {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome</h1>
+    <div class="btn-container">
+      <a href="/user/login" class="btn">Login</a>
+      <a href="/user/signup" class="btn">Sign Up</a>
+    </div>
+  </div>
+</body>
+</html>

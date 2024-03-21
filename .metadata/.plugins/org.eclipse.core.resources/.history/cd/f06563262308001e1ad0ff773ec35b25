@@ -1,0 +1,13 @@
+package com.annotation;
+
+import org.springframework.boot.ApplicationArguments;
+
+public class AnnotationTest {
+	
+	public static void main(String[] args) {
+		
+		
+		ApplicationContext context = new AnnotationConfigApplicationContext("AppConfig.xml");
+	}
+
+}

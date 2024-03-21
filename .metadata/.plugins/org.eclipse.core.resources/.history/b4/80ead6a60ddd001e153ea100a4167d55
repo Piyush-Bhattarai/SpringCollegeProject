@@ -1,0 +1,52 @@
+package com.springproject.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.springproject.model.User;
+import com.springproject.service.UserService;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+	
+	@Autowired
+	private UserService userservice;
+	
+	@GetMapping("/login")
+	public String getLogin() {
+		
+		return "LoginForm";
+	} 
+	
+	@PostMapping("/login")
+	public String postLogin(@ModelAttribute User user, Model model) {
+		
+		User usr = userservice.login(user.getUserName(), user.getPassword());
+		
+		if(usr != null) {}
+		
+		
+		return "Home";
+	}
+	
+	@GetMapping("/signup")
+	public String getSignUp() {
+		
+		return "SignUpForm";
+	}
+	
+	@PostMapping("/signup")
+	public String postSignUp(@ModelAttribute User user) {
+		
+		userservice.SignUp(user);
+		
+		return "LoginForm";
+	}
+
+}

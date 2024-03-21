@@ -1,0 +1,23 @@
+package com.annotation;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component(value=clz)
+public class College {
+	
+	@Value("Niagara")
+	private String name;
+	
+	@Value("9874132563")
+	private String phone;
+	
+	
+ void printdetails() {
+		
+		System.out.println("Name :"+name);
+		System.out.println("Phone :"+phone);
+		
+	}
+
+}

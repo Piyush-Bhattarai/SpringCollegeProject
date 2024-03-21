@@ -1,0 +1,28 @@
+package oops;
+
+import java.util.Scanner;
+
+public class Test {
+
+	
+	public static void main(String[] args) {
+		
+		
+		Scanner sc = new Scanner(System.in);
+		
+			BookObject book1 = new BookObject();
+			
+			book1.bookID = 101;
+			book1.bookAurther = "Piyush";
+			book1.bookName = "Hello World";
+			book1.BookPrice = 1200;
+			
+			book1.printbook();
+			
+			BookObject book2 = new BookObject();
+			
+			sy
+			book2.bookID = sc.nextInt();
+		
+	}
+}

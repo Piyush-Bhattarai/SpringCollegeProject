@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>E-commerce Homepage</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    
+    @media (min-width: 992px){
+.col-lg-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 49.333333%;
+}
+}
+    
+    
+    
+    .input-group {
+    
+      flex: 0 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .jumbotron {
+      background-image: url('/images/background.jpg');
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 200px 0;
+      margin-bottom: 0;
+    }
+    
+    .jumbotron h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+    
+    .jumbotron p {
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+    
+    
+    
+  /* General styles */
+.product-link {
+    text-decoration: none;
+    color: #333; /* Change the link color as needed */
+}
+
+.products {
+    margin-bottom: 40px;
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+.product {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Set a fixed size for the product container */
+    width: 300px;
+    height: 400px;
+    display: flex; /* Use Flexbox for button alignment */
+    flex-direction: column; /* Stack the elements vertically */
+    justify-content: space-between; /* Distribute elements evenly within the container */
+}
+
+.product:hover {
+    cursor: pointer;
+    background: #e2e2e2;
+}
+
+.product img {
+    width: 100%;
+    max-height: 180px; /* Set a maximum height for the images */
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product h4 {
+    font-size: 20px; /* Increase font size for the product title */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Change the title color */
+}
+
+.product p {
+    font-size: 17px; /* Increase font size for the product description */
+    color: #ff1717; /* Change the description color */
+    line-height: 1.6; /* Add some spacing between lines */
+}
+
+.product p.price {
+    font-size: 24px; /* Increase font size for the product price */
+    font-weight: bold;
+    color: #007BFF; /* Change the price color */
+    margin-bottom: 15px; /* Add spacing below the price */
+}
+
+/* Style the buttons if needed */
+.btn {
+    /* Add your button styling here */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 767px) {
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .product {
+        width: 250px;
+        height: 350px;
+    }
+
+    .product img {
+        max-height: 150px;
+        margin-bottom: 10px;
+    }
+
+    .product h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .product .btn-wrapper {
+        height: 40px;
+    }
+}
+
+
+
+    
+    .footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    .footer a {
+      color: #fff;
+    }
+    
+    .navbar {
+    
+      position:fixed;
+      background-color: #4326c2;;
+      color: #fff;
+      width: 100%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      z-index:999;
+    }
+    .navbar-brand {
+      color: #fff;
+      font-weight: bold;
+    }
+    
+    .custom-profile-image {
+     width: 30px;
+     height: 30px;
+     
+    }  
+    
+    .profile-dropdown {
+      padding: 0.5rem;
+      min-width: 200px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    .profile-dropdown a.dropdown-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-dropdown a.dropdown-item i {
+      margin-right: 0.5rem;
+    }
+
+
+    
+  </style>
+</head>
+<body>
+
+ 
+
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <a class="navbar-brand" href="/Insta-deals/index">Insta-deals</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/Insta-deals/index">Home</a>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categories
+       </a>
+        <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+        <a class="dropdown-item" href="#" th:each="category : ${Categorylist}" th:text="${category.categoryTitle}" th:href="@{'/category/' + ${category.id}}"></a>
+       </div>
+     </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+                    <a style="color: white" class="nav-link" href="/mycart">My Cart</a>
+                </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Insta-deals/admindashboard">Sell Products</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <div class="input-group mx-auto">
+        <input class="form-control" type="search" name="keyword" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/profile.png" alt="P" class="rounded-circle profile-image">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right profile-dropdown" aria-labelledby="profileDropdown">
+          <a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i> Add Profile Picture</a>
+          <a class="dropdown-item" href="/Insta-deals/userlogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
+          <a class="dropdown-item" href="/Insta-deals/currentpassword"><i class="fas fa-key"></i> Change Password</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<i class="bi bi-person-circle"></i>
+  
+  
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Welcome to our E-commerce Store</h1>
+      <p>Discover amazing products at great prices.</p> <a href="#" class="btn btn-primary btn-lg">Shop Now</a>
+    </div>
+  </div>
+  
+  
+  
+  <section class="products">
+    <div class="container">
+      
+      
+<div th:if="${#lists.isEmpty(allproducts)}">
+    <p>No products found.</p>
+</div>
+
+<div th:if="${not #lists.isEmpty(allproducts)}">
+    <div class="row">
+        <div th:each="product : ${allproducts}" class="col-lg-4 col-md-6">
+        <form th:object="${prodObj}">
+     <a  th:href="@{/Insta-deals/productdetails(id=${product.id})}" class="product-link"> 
+    <div class="product">
+        <!-- Update the image path as shown below -->
+        <img th:src="@{/productimage/} + ${product.productimage}" th:alt="${product.productTitle}">
+        <h4 th:text="${product.productTitle}">Product Title</h4>
+        <p th:text="'Rs.' + ${product.productPrice}"></p>
+      <!--   <p th:text="${product.productDescription}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+    </div>
+</a>
+</form>
+
+</div>
+
+    </div>
+</div>
+       
+      
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 E-commerce. All rights reserved. | Designed by <a href="#">Your Name</a></p>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+</html>

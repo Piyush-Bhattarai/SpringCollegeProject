@@ -1,0 +1,58 @@
+package oops;
+
+public class BookObject {
+
+	
+	// properties
+	
+	int bookID;
+	String bookName;
+	String bookAurther;
+	float BookPrice;
+	
+	
+	
+	//method
+	
+	 void printbook() {
+		
+		 package arrays;
+
+		 import java.util.Arrays;
+
+		 public class oddNumsUsingArrays {
+		 	
+		 	public static void main(String[] args) {
+		 		
+		 		
+		 		System.out.println(Arrays.toString(getoddnumsfrom1to100()));
+		 		
+		 	}
+		 	
+		 	static int[] getoddnumsfrom1to100() {
+		 		
+		 		int [] arr = new int[100];
+		 		
+		 		
+		 		for(int i = 0;i<100; i++) {
+		 			
+		 			
+		 			if(i % 2 != 0) {
+		 				
+		 				arr[i] += 1;
+		 			}
+		 			
+		 			
+		 		}
+		 		
+		 		
+		 		return arr;
+		 		
+		 		
+		 	}
+		 }
+
+		
+	}
+	
+}

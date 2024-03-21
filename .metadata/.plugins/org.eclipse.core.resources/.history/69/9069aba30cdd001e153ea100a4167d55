@@ -1,0 +1,38 @@
+package com.springproject.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+	
+	
+	@GetMapping("/login")
+	public String getLogin() {
+		
+		return "LoginForm";
+	} 
+	
+	@PostMapping("/login")
+	public String postLogin() {
+		
+		
+		return "Home";
+	}
+	
+	@GetMapping("/signup")
+	public String getSignUp() {
+		
+		return "SignUpForm";
+	}
+	
+	@PostMapping()
+	public String postSignUp() {
+		
+		return "LoginForm";
+	}
+
+}
